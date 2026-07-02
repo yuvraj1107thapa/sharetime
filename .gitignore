@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dev-dist/
+coverage/
+*.tsbuildinfo
+
+# Platform caches
+.netlify/
+.vercel/
+.vite/
+.eslintcache
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
