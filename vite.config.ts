@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -11,5 +12,9 @@ export default defineConfig({
   },
   server: {
     port: 3000
+  },
+  test: {
+    globals: true,
+    include: ['test/**/*.{test,spec}.{ts,tsx}']
   }
 })
