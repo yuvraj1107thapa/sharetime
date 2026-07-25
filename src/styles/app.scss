@@ -1,0 +1,21 @@
+// Customisations
+$family-primary: 'Azeret Mono', monospace;
+
+// Only the Bulma modules the app actually uses
+@import "bulma/sass/utilities/_all.sass";
+@import "bulma/sass/helpers/_all.sass";
+
+@import "bulma/sass/base/generic.sass";
+@import "bulma/sass/base/minireset.sass";
+
+@import "bulma/sass/elements/container.sass";
+@import "bulma/sass/elements/title.sass";
+@import "bulma/sass/elements/box.sass";
+@import "bulma/sass/elements/content.sass";
+
+@import "bulma/sass/components/navbar.sass";
+
+.subtitle {
+  color: hsl(0, 0%, 50%);
+  font-weight: 300;
+}

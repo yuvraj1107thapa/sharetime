@@ -10,6 +10,15 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // Bulma 0.9 still uses @import and global built-ins
+        quietDeps: true,
+        silenceDeprecations: ['import', 'global-builtin', 'legacy-js-api', 'if-function', 'color-functions', 'slash-div']
+      }
+    }
+  },
   server: {
     port: 3000
   },
