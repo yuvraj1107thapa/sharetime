@@ -1,3 +1,15 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import DefaultLayout from '@/layouts/DefaultLayout'
+import Home from '@/pages/Home'
+
 export default function App () {
-  return <p>sharetime</p>
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<DefaultLayout />}>
+          <Route index element={<Home />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
 }
