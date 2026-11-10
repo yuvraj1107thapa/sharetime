@@ -3,12 +3,14 @@ import DisambiguateTZ from '@/components/DisambiguateTZ'
 import InvalidTZError from '@/components/InvalidTZError'
 import TickerTime from '@/components/TickerTime'
 import { isValidTZAbbrParam } from '@/data/routes'
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useTimezone } from '@/hooks/useTimezone'
 import NotFound from './NotFound'
 
 export default function NowPage () {
   const { tz } = useParams()
   const { displayTZ, displayTZAbbr, showTime, showTZError, showAmbiguous, possibleTZs } = useTimezone()
+  useDocumentTitle(`Time now in ${tz ?? displayTZ}`)
 
   if (tz !== undefined && !isValidTZAbbrParam(tz)) {
     return <NotFound />

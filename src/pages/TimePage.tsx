@@ -4,6 +4,7 @@ import DisambiguateTZ from '@/components/DisambiguateTZ'
 import InvalidTZError from '@/components/InvalidTZError'
 import StaticTime from '@/components/StaticTime'
 import { isValidTZAbbrParam } from '@/data/routes'
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useTimezone } from '@/hooks/useTimezone'
 import { convertTime } from '@/time/convert'
 import { isValidTimeString } from '@/time/parse'
@@ -13,6 +14,7 @@ export default function TimePage () {
   const { tz, time = '' } = useParams()
   const { displayTZ, displayTZAbbr, showTime, showTZError, showAmbiguous, possibleTZs } = useTimezone()
   const converted = useMemo(() => convertTime(time, displayTZ), [time, displayTZ])
+  useDocumentTitle(`${time} ${tz ?? displayTZ} in your timezone`)
 
   const validTZ = tz === undefined || isValidTZAbbrParam(tz)
   if (!validTZ || !isValidTimeString(time)) {
