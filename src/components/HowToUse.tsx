@@ -52,7 +52,7 @@ function ExampleList ({ examples }: { examples: Example[] }) {
 
 export default function HowToUse () {
   return (
-    <main>
+    <div>
       <section>
         <h1 className="title is-size-4 p-3 mt-4">
           How does <code>{SITE_NAME}</code> work?
@@ -68,9 +68,9 @@ export default function HowToUse () {
 
       <section className="p-2 mt-2">
         <h2 className="title is-4">Sharing time in particular timezone</h2>
-        <h6 className="subtitle is-6">
+        <p className="subtitle is-6">
           When opened by anyone they will see the time translated to their local timezone
-        </h6>
+        </p>
         <div>
           <p className="has-text-weight-bold">Examples</p>
           <p>
@@ -88,6 +88,6 @@ export default function HowToUse () {
           <ExampleList examples={nowExamples} />
         </div>
       </section>
-    </main>
+    </div>
   )
 }

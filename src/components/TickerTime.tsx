@@ -17,8 +17,9 @@ export default function TickerTime ({ displayTZ }: Props) {
   }, [displayTZ])
 
   return (
-    <div className="is-size-4 has-text-weight-bold">
+    // Updates every second, so keep it out of the live region to avoid flooding screen readers
+    <time className="is-block is-size-4 has-text-weight-bold" aria-live="off" dateTime={displayTime.toISO() ?? undefined}>
       {displayTime.toFormat('hh:mm:ss a')}
-    </div>
+    </time>
   )
 }

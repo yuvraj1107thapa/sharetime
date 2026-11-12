@@ -4,32 +4,30 @@ import { SITE_NAME } from '@/config'
 
 export default function NavBar () {
   const [expanded, setExpanded] = useState(false)
-  const toggle = () => setExpanded(value => !value)
+  const close = () => setExpanded(false)
 
   return (
-    <nav className="navbar" role="navigation">
+    <nav className="navbar" aria-label="main navigation">
       <div className="navbar-brand">
-        <span className="navbar-item has-text-primary-dark has-text-weight-bold">\ {SITE_NAME} \</span>
-        <a
-          role="button"
+        <Link to="/" className="navbar-item has-text-primary-dark has-text-weight-bold" onClick={close}>
+          \ {SITE_NAME} \
+        </Link>
+        <button
+          type="button"
           className={`navbar-burger${expanded ? ' is-active' : ''}`}
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navMenu"
-          onClick={toggle}
+          aria-label={expanded ? 'Close menu' : 'Open menu'}
+          aria-expanded={expanded}
+          aria-controls="navMenu"
+          onClick={() => setExpanded(value => !value)}
         >
           <span aria-hidden="true" />
           <span aria-hidden="true" />
           <span aria-hidden="true" />
-        </a>
+        </button>
       </div>
-      <div
-        id="navMenu"
-        className={`navbar-menu${expanded ? ' is-active' : ''}`}
-        onClick={toggle}
-      >
+      <div id="navMenu" className={`navbar-menu${expanded ? ' is-active' : ''}`}>
         <div className="navbar-start">
-          <Link to="/" className="navbar-item">Home</Link>
+          <Link to="/" className="navbar-item" onClick={close}>Home</Link>
         </div>
       </div>
     </nav>

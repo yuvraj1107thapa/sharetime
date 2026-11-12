@@ -6,8 +6,8 @@ type Props = {
 
 export default function StaticTime ({ displayTime }: Props) {
   return (
-    <div className="is-size-4 has-text-weight-bold">
+    <time className="is-block is-size-4 has-text-weight-bold" dateTime={displayTime.toISO() ?? undefined}>
       {displayTime.toFormat('hh:mm a')}
-    </div>
+    </time>
   )
 }
