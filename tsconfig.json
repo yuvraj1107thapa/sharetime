@@ -1,4 +1,15 @@
 {
+  // Root options are only used by Vercel when it compiles middleware.ts on its own:
+  // rewrite the ".ts" import paths (needed by Netlify's Deno) to ".js" in its output.
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "rewriteRelativeImportExtensions": true,
+    "skipLibCheck": true,
+    "strict": true
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },

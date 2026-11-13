@@ -1,9 +1,10 @@
-// Vercel Routing Middleware (Edge runtime). Answers cURL requests in plain text;
+// Vercel Routing Middleware (Node.js runtime). Answers cURL requests in plain text;
 // returning nothing lets Vercel serve the static React app.
-import timezones from 'tzabbrmap'
-import { curlResponse, isCurlRequest } from './src/server/curl.ts'
+import timezones from 'tzabbrmap' with { type: 'json' }
+import { curlResponse, isCurlRequest, type TimezoneMap } from './src/server/curl.ts'
 
 export const config = {
+  runtime: 'nodejs',
   matcher: '/((?!assets/).*)'
 }
 
@@ -13,7 +14,7 @@ export default function middleware (request: Request): Response | undefined {
   }
   const url = new URL(request.url)
   const clientTZ = decodeURIComponent(request.headers.get('x-vercel-ip-timezone') ?? '')
-  const result = curlResponse(url.pathname, clientTZ, timezones, url.host)
+  const result = curlResponse(url.pathname, clientTZ, timezones as TimezoneMap, url.host)
   if (result === null) {
     return undefined
   }
